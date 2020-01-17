@@ -1,0 +1,112 @@
+@(controller:de.htwg.se.heroes.controllerComponent.ControllerInterface)
+    @size= @{ 9 }
+    @toScalar(house:Int, cell:Int)=@{ (house+3*cell).toString}
+    @cellType(x:Int, y:Int)= @{
+        import de.htwg.se.heroes.model.fieldComponent.fieldBaseImpl.HeroCell
+        import de.htwg.se.heroes.model.fieldComponent.fieldBaseImpl.Leer
+        import de.htwg.se.heroes.model.fieldComponent.fieldBaseImpl.Stop
+        import de.htwg.se.heroes.model.fieldComponent.fieldBaseImpl.GoldCell
+        import de.htwg.se.heroes.model.fieldComponent.fieldBaseImpl.EnemyCell
+        controller.getMatrixCell(x,y) match {
+            case f:HeroCell => "hero.png"
+            case Leer() => "grass.jpg"
+            case Stop() => "berg.jpg"
+            case GoldCell() => "gold.jpg"
+            case f: EnemyCell => "drake.jpg"
+            //case f: MeleeSoldier => "lich.jpg"
+            //case f: RangeSoldier => "gold.jpg"
+        }
+    }
+
+@main("heroes"){
+@*    <script src='@assets.path("javascripts/vue.js")'></script>
+    <script src='@assets.path("javascripts/heroesVue.js")'></script>
+    <div id="heroes-game" class="pagecontainer">
+
+        <heroes-field></heroes-field>
+
+    </div>*@
+    <head>
+        
+    </head>
+    <p> Hello </p>
+   @* <html>
+    <head>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-auto col-lg-auto col-xl-8">
+                    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/wui.css")"/>
+                    <br>
+                    <div class = "playField">
+                        <div class = "container-fluid" id = "gr">
+                            @for(rowIndex <- 0 until 9) {
+                                <div class="row">
+                               @for(columnIndex <-0 until 9){
+                                   <div  img style="visibility: visible;" id= @toScalar(columnIndex, rowIndex)>
+                                        <img  class="img2" src= @routes.Assets.versioned("images/" + {cellType(columnIndex,rowIndex)})>
+                                   </div>
+                               }
+                                </div>
+                            }
+                            @for(houseIndex <- 0 until 9) {
+                                <div class="row">
+                                @for(cellIndex <- 0 until 9) {
+                                    <div class="cell" id="scalar@{houseIndex * cellIndex}">
+                                    </div>
+                                }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-sm-0 col-md-auto col-lg-auto col-xl-4 sidenav">
+                        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/wui.css")"/>
+                        <br>
+                        <div class="container-fluid">
+                            <div class="row flex">
+                                <div class="col-sm-6 ">
+                                    <hr>
+                                    <ul class="flex-column">
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="buttonUp" >MoveUp</button>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="buttonDown">MoveDown</button>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="buttonLeft">MoveLeft</button>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="buttonRight">MoveRight</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <hr>
+                                    <ul class="flex-column">
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="LookUp" >LookUp</button></a>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="LookDown" >LookDown</button></a>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="LookLeft" >LookLeft</button></a>
+                                        </li>
+                                        <li class ="classWithPad">
+                                            <button class="btn btn-secondary btn-block responsive-width" type="button" id="LookRight" >LookRight</button></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <br>
+        </div>
+   </body>
+   </html>*@
+
+}
